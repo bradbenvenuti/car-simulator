@@ -21,9 +21,9 @@ measurements = []
 for line in lines:
 	steeringCorrection = 0.1
 	steeringAngles = []
-	steeringAngles[0] = float(line[3])
-	steeringAngles[1] = steeringAngles[0] + steeringCorrection
-	steeringAngles[2] = steeringAngles[0] - steeringCorrection
+	steeringAngles.append(float(line[3]))
+	steeringAngles.append(steeringAngles[0] + steeringCorrection)
+	steeringAngles.append(steeringAngles[0] - steeringCorrection)
 	for i in range(3):
 		# get relative path for image so this works on all machines
 		source_path = line[i]
