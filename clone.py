@@ -33,7 +33,8 @@ for line in lines:
 		# get relative path for image so this works on all machines
 		source_path = line[i]
 		filename = source_path.split('/')[-1]
-		local_path = '../drivingdata/IMG/' + filename
+		dir = source_path.split('/')[-3]
+		local_path = '../' + dir + '/IMG/' + filename
 		image = cv2.imread(local_path)
 		images.append(image)
 		# create flipped version
