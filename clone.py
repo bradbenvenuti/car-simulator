@@ -82,7 +82,7 @@ model.add(Dense(10))
 model.add(Dense(1))
 
 model.compile(loss='mse', optimizer='adam')
-model.fit_generator(train_generator, samples_per_epoch=9024, validation_data=validation_generator, nb_val_samples=len(validation_samples), nb_epoch=4)
+model.fit_generator(train_generator, samples_per_epoch=9024, validation_data=validation_generator, nb_val_samples=len(validation_samples), nb_epoch=3)
 
 model.save('model.h5')
 
