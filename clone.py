@@ -30,7 +30,7 @@ def generator(samples, batch_size=192):
 
 			# Load the images and measurements
 			for batch_sample in batch_samples:
-				steeringCorrection = 0.1
+				steeringCorrection = 0.2
 				steeringAngles = []
 				steeringAngles.append(float(batch_sample[3]))
 				steeringAngles.append(steeringAngles[0] + steeringCorrection)
