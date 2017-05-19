@@ -14,10 +14,10 @@ with open('../drivingdata4/driving_log.csv') as csvfile:
 	for line in reader:
 		lines.append(line)
 
-with open('../drivingdata2/driving_log.csv') as csvfile:
-	reader = csv.reader(csvfile)
-	for line in reader:
-		lines.append(line)
+# with open('../drivingdata2/driving_log.csv') as csvfile:
+# 	reader = csv.reader(csvfile)
+# 	for line in reader:
+# 		lines.append(line)
 
 with open('../drivingdata3/driving_log.csv') as csvfile:
 	reader = csv.reader(csvfile)
