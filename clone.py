@@ -19,11 +19,11 @@ with open('../drivingdata/driving_log.csv') as csvfile:
 # Split data into train / validation sets
 train_samples, validation_samples = train_test_split(lines, test_size=0.2)
 
-def generator(samples, batch_size=32*3):
+def generator(samples, batch_size=96):
 	num_samples = len(samples)
 	while 1: # Loop forever so the generator never terminates
-		for offset in range(0, num_samples, int(batch_size/3)):
-			batch_samples = samples[offset:offset+int(batch_size/3)]
+		for offset in range(0, num_samples, 32):
+			batch_samples = samples[offset:offset+32]
 
 			images = []
 			measurements = []
@@ -57,8 +57,8 @@ def generator(samples, batch_size=32*3):
 
 
 # compile and train the model using the generator function
-train_generator = generator(train_samples, batch_size=32*3)
-validation_generator = generator(validation_samples, batch_size=32*3)
+train_generator = generator(train_samples, batch_size=96)
+validation_generator = generator(validation_samples, batch_size=96)
 
 # Create the model
 model = Sequential()
