@@ -37,7 +37,7 @@ def generator(samples, batch_size=192):
 				steeringAngles.append(steeringAngles[0] - steeringCorrection)
 				for i in range(3):
 					# get relative path for image so this works on all machines
-					source_path = line[i]
+					source_path = batch_sample[i]
 					filename = source_path.split('/')[-1]
 					local_path = '../drivingdata/IMG/' + filename
 					image = cv2.imread(local_path)
@@ -82,7 +82,7 @@ model.add(Dense(10))
 model.add(Dense(1))
 
 model.compile(loss='mse', optimizer='adam')
-model.fit_generator(train_generator, samples_per_epoch=9024, validation_data=validation_generator, nb_val_samples=len(validation_samples), nb_epoch=3)
+model.fit_generator(train_generator, samples_per_epoch=len(train_samples), validation_data=validation_generator, nb_val_samples=len(validation_samples), nb_epoch=3)
 
 model.save('model.h5')
 
