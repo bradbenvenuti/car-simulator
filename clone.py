@@ -16,6 +16,8 @@ with open('../drivingdata/driving_log.csv') as csvfile:
 	for line in reader:
 		lines.append(line)
 
+np.random.shuffle(lines)
+
 # Split data into train / validation sets
 train_samples, validation_samples = train_test_split(lines, test_size=0.2)
 
