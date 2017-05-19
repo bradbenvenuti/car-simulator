@@ -7,7 +7,7 @@ from keras.layers import Flatten, Dense, Lambda, Cropping2D
 from keras.layers.convolutional import Convolution2D
 from keras.layers.pooling import MaxPooling2D
 
-# Read CSV file to get driving data
+# Read CSV files to get driving data
 lines = []
 with open('../drivingdata/driving_log.csv') as csvfile:
 	reader = csv.reader(csvfile)
@@ -15,6 +15,11 @@ with open('../drivingdata/driving_log.csv') as csvfile:
 		lines.append(line)
 
 with open('../drivingdata2/driving_log.csv') as csvfile:
+	reader = csv.reader(csvfile)
+	for line in reader:
+		lines.append(line)
+
+with open('../drivingdata3/driving_log.csv') as csvfile:
 	reader = csv.reader(csvfile)
 	for line in reader:
 		lines.append(line)
@@ -36,7 +41,6 @@ for line in lines:
 		filename = split[-1]
 		dir = split[-3]
 		local_path = '../' + dir + '/IMG/' + filename
-		print(local_path)
 		image = cv2.imread(local_path)
 		images.append(image)
 		# create flipped version
