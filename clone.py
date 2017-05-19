@@ -53,7 +53,6 @@ def generator(samples, batch_size=192):
 			# Convert to numpy arrays
 			x_train = np.array(images)
 			y_train = np.array(measurements)
-			print(len(images))
 			yield sklearn.utils.shuffle(x_train, y_train)
 
 
