@@ -22,6 +22,7 @@ train_samples, validation_samples = train_test_split(lines, test_size=0.2)
 def generator(samples, batch_size=192):
 	num_samples = len(samples)
 	while 1: # Loop forever so the generator never terminates
+		np.random.shuffle(samples)
 		for offset in range(0, num_samples, 32):
 			batch_samples = samples[offset:offset+32]
 
@@ -82,7 +83,7 @@ model.add(Dense(10))
 model.add(Dense(1))
 
 model.compile(loss='mse', optimizer='adam')
-model.fit_generator(train_generator, samples_per_epoch=len(train_samples), validation_data=validation_generator, nb_val_samples=len(validation_samples), nb_epoch=3)
+model.fit_generator(train_generator, samples_per_epoch=len(train_samples), validation_data=validation_generator, nb_val_samples=len(validation_samples), nb_epoch=4)
 
 model.save('model.h5')
 
