@@ -9,7 +9,7 @@ from keras.layers.pooling import MaxPooling2D
 
 # Read CSV files to get driving data
 lines = []
-with open('../drivingdata/driving_log.csv') as csvfile:
+with open('../drivingdata4/driving_log.csv') as csvfile:
 	reader = csv.reader(csvfile)
 	for line in reader:
 		lines.append(line)
