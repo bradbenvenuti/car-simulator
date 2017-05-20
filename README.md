@@ -17,15 +17,11 @@ The goals / steps of this project are the following:
 [image3]: ./examples/left.png "Left"
 [image4]: ./examples/right.png "Right"
 
-[image5]: ./examples/recover1.png "Recover1"
-[image6]: ./examples/recover2.png "Recover2"
-[image7]: ./examples/recover3.png "Recover3"
-[image8]: ./examples/recover4.png "Recover4"
-[image9]: ./examples/recover5.png "Recover5"
-
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image5]: ./examples/recover1.jpg "Recover1"
+[image6]: ./examples/recover2.jpg "Recover2"
+[image7]: ./examples/recover3.jpg "Recover3"
+[image8]: ./examples/recover4.jpg "Recover4"
+[image9]: ./examples/recover5.jpg "Recover5"
 
 ## Rubric Points
 Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.
