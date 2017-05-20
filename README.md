@@ -13,9 +13,16 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./model.png "Model Visualization"
-[image2]: ./examples/placeholder.png "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
+[image2]: ./examples/center.png "Center"
+[image3]: ./examples/left.png "Left"
+[image4]: ./examples/right.png "Right"
+
+[image5]: ./examples/recover1.png "Recover1"
+[image6]: ./examples/recover2.png "Recover2"
+[image7]: ./examples/recover3.png "Recover3"
+[image8]: ./examples/recover4.png "Recover4"
+[image9]: ./examples/recover5.png "Recover5"
+
 [image5]: ./examples/placeholder_small.png "Recovery Image"
 [image6]: ./examples/placeholder_small.png "Normal Image"
 [image7]: ./examples/placeholder_small.png "Flipped Image"
@@ -47,8 +54,6 @@ The clone.py file contains the code for training and saving the convolution neur
 ### Model Architecture and Training Strategy
 
 #### 1. An appropriate model architecture has been employed
-
-![alt text][image1]
 
 My Model is based on the NVIDIA architecture discussed in the lesssons.
 
@@ -82,9 +87,7 @@ My first step was to use a convolution neural network model similar to the NVIDI
 
 In order to gauge how well the model was working, I split my image and steering angle data into a training and validation set. I found that my first model had a low mean squared error on the training set but a high mean squared error on the validation set. This implied that the model was overfitting.
 
-To combat the overfitting, I modified the model so that it used dropout.
-
-Then I added a lot more training data, including driving the track counterclockwise, adding recovery laps and driving the second track. I also used 3 camera images with adjusted steering measurements and duplicated and flipped every image.
+To combat the overfitting, added a lot more training data. This included driving the track counter-clockwise, adding recovery laps and driving the second track. I also used 3 camera images with adjusted steering measurements and duplicated and flipped every image.
 
 The final step was to run the simulator to see how well the car was driving around track one. There were a few spots where the vehicle fell off the track, but on track two the car drover perfectly. To improve the driving behavior in track 1, I trained the model again making sure to shuffle the data first. It seemed that the model was favoring the second track and shuffling the data resolved that.
 
@@ -117,26 +120,29 @@ Here is a visualization of the architecture (note: visualizing the architecture 
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
+From center camera:
 ![alt text][image2]
+
+From left camera:
+![alt text][image3]
+
+From right camera:
+![alt text][image4]
 
 I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
 
-![alt text][image3]
-![alt text][image4]
 ![alt text][image5]
-
-Then I repeated this process on track two in order to get more data points.
-
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
-
 ![alt text][image6]
 ![alt text][image7]
+![alt text][image8]
+![alt text][image9]
 
-Etc ....
+I did this process on both tracks in order to get more data points.
 
-After the collection process, I had X number of data points. I then preprocessed this data by ...
+To augment the data set, I also flipped images and angles thinking that this would help reduce overfitting.
 
+After the collection process, I had 9719 data points. I then preprocessed this data by cropping the images and normalizing them.
 
-I finally randomly shuffled the data set and put Y% of the data into a validation set.
+I finally randomly shuffled the data set and put 20% of the data into a validation set.
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 3 as it started to overfit after that. I used an adam optimizer so that manually training the learning rate wasn't necessary.
