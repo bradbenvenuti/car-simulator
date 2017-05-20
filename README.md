@@ -1,6 +1,4 @@
-#**Behavioral Cloning**
-
----
+# Behavioral Cloning
 
 **Behavioral Cloning Project**
 
@@ -23,32 +21,32 @@ The goals / steps of this project are the following:
 [image7]: ./examples/placeholder_small.png "Flipped Image"
 
 ## Rubric Points
-###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.
+Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.
 
 ---
-###Files Submitted & Code Quality
+### Files Submitted & Code Quality
 
-####1. Submission includes all required files and can be used to run the simulator in autonomous mode
+#### 1. Submission includes all required files and can be used to run the simulator in autonomous mode
 
 My project includes the following files:
 * clone.py containing the script to create and train the model
 * drive.py for driving the car in autonomous mode
 * model.h5 containing a trained convolution neural network
-* README.md or writeup_report.pdf summarizing the results
+* README.md summarizing the results
 
-####2. Submission includes functional code
+#### 2. Submission includes functional code
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing
 ```sh
 python drive.py model.h5
 ```
 
-####3. Submission code is usable and readable
+#### 3. Submission code is usable and readable
 
 The clone.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
-####1. An appropriate model architecture has been employed
+#### 1. An appropriate model architecture has been employed
 
 ![alt text][image1]
 
@@ -62,23 +60,23 @@ Next, the model has a flatten layer and 4 dense layers that output 100, 50, 10, 
 
 The model includes RELU layers to introduce nonlinearity, and the data is normalized (code line 79) and cropped (code line 82) in the model using a Keras lambda layer.
 
-####2. Attempts to reduce overfitting in the model
+#### 2. Attempts to reduce overfitting in the model
 
 The model was trained and validated on different data sets to ensure that the model was not overfitting. The training data was created from two different tracks, driven clockwise and counterclockwise, with recovery laps (driving from the edge to center of the track), with 3 camera angles, and each image flipped horizontally. The model was tested by running it through the simulator and ensuring that the vehicle could stay on the track. It easily drove around track 1. On track two it struggled around a very sharp turn, hitting the edge.
 
-####3. Model parameter tuning
+#### 3. Model parameter tuning
 
 The model used an adam optimizer, so the learning rate was not tuned manually (clone.py line 98).
 
-####4. Appropriate training data
+#### 4. Appropriate training data
 
 Training data was chosen to keep the vehicle driving on the road. I used a combination of center lane driving, recovering from the left and right sides of the road ...
 
 For details about how I created the training data, see the next section.
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 
-####1. Solution Design Approach
+#### 1. Solution Design Approach
 
 My first step was to use a convolution neural network model similar to the NVIDIA architecture. I thought this model might be appropriate because it was designed for self-driving cars.
 
@@ -92,28 +90,30 @@ The final step was to run the simulator to see how well the car was driving arou
 
 At the end of the process, the vehicle is able to drive autonomously around track 1 without leaving the road. It was also able to make it a good portion of track 2.
 
-####2. Final Model Architecture
+#### 2. Final Model Architecture
 
 The final model architecture (clone.py lines 18-24) consisted of a convolution neural network with the following layers and layer sizes ...
-| Layer (type) | Output Shape |
-|<keras.layers.core.Lambda> | (None, 160, 320, 3) |
-|<keras.layers.convolutional.Cropping2D> | (None, 70, 320, 3) |
-|<keras.layers.convolutional.Convolution2D> | (None, 33, 158, 24) |
-|<keras.layers.convolutional.Convolution2D> | (None, 15, 77, 36) |
-|<keras.layers.convolutional.Convolution2D> | (None, 6, 37, 48) |
-|<keras.layers.convolutional.Convolution2D> | (None, 4, 35, 64) |
-|<keras.layers.convolutional.Convolution2D> | (None, 2, 33, 64) |
-|<keras.layers.core.Flatten> | (None, 4224) |
-|<keras.layers.core.Dense> | (None, 100) |
-|<keras.layers.core.Dense> | (None, 50) |
-|<keras.layers.core.Dense> | (None, 10) |
-|<keras.layers.core.Dense> | (None, 1) |
+
+| Layer (type) | Output Shape  |
+| ------------ | ------------- |
+| <keras.layers.core.Lambda> | (None, 160, 320, 3) |
+| <keras.layers.convolutional.Cropping2D> | (None, 70, 320, 3) |
+| <keras.layers.convolutional.Convolution2D> | (None, 33, 158, 24) |
+| <keras.layers.convolutional.Convolution2D> | (None, 15, 77, 36) |
+| <keras.layers.convolutional.Convolution2D> | (None, 6, 37, 48) |
+| <keras.layers.convolutional.Convolution2D> | (None, 4, 35, 64) |
+| <keras.layers.convolutional.Convolution2D> | (None, 2, 33, 64) |
+| <keras.layers.core.Flatten> | (None, 4224) |
+| <keras.layers.core.Dense> | (None, 100) |
+| <keras.layers.core.Dense> | (None, 50) |
+| <keras.layers.core.Dense> | (None, 10) |
+| <keras.layers.core.Dense> | (None, 1) |
 
 Here is a visualization of the architecture (note: visualizing the architecture is optional according to the project rubric)
 
 ![alt text][image1]
 
-####3. Creation of the Training Set & Training Process
+#### 3. Creation of the Training Set & Training Process
 
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
 
